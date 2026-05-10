@@ -6,6 +6,8 @@ Built for the ABB Accelerator 2026 pan-India innovation challenge, Bengaluru, Ju
 The Problem:
 Every major industrial disaster of the past 40 years shares one common thread: operators couldn't distinguish the signal from the noise.
 
+Deployment link: https://git-it-ratan.github.io/smart-hmi/
+
 Traditional vs Smart Mode Toggle: The centerpiece of the demo. One click collapses 47 scattered alarms into a single prioritised Incident Card — judges see the transformation in real time.
 
 Cascading Failure Simulation: A JavaScript-driven simulator models a realistic water treatment plant with 10 sensors and 3 failure scenarios. When Pump P1 trips, flow, tank level, and pressure degrade with real propagation delays — exactly as they would in a physical plant.
