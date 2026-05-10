@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OperatorAI — Smart HMI | ABB Accelerator 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <div class="dot"></div>
+      OPERATOR<span style="color:var(--amber)">AI</span>
+    </div>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="#demo">Live Demo</a>
+      <a href="#tech">Stack</a>
+      <a href="#timeline">Roadmap</a>
+    </div>
+    <div class="nav-badge">ABB ACCELERATOR 2026</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-label">Theme 1 · Smart HMI · Water Treatment Plant</div>
+      <h1>
+        <span class="line1">When operators can't</span>
+        <span class="line2">see what matters,</span>
+        <span class="line1">critical systems fail.</span>
+      </h1>
+      <p class="hero-sub">OperatorAI transforms alarm floods into calm, guided, role-specific action — using AI to
+        narrate what's happening before it becomes a crisis.</p>
+      <div class="hero-ctas">
+        <a href="#demo" class="btn-primary">See the Live Demo</a>
+        <a href="#problem" class="btn-secondary">Understand the Problem</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">600+</span>
+      <div class="stat-label">Alarms/hour in a flooded plant</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$2.1B</span>
+      <div class="stat-label">Texas City disaster cost (2005)</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">6</span>
+      <div class="stat-label">Alarms/hour — ISA-18.2 target</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15</span>
+      <div class="stat-label">Deaths from a single alarm failure</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM SECTION -->
+  <section id="problem">
+    <div class="container">
+      <div class="section-tag">01 / The Problem</div>
+      <h2>Alarm overload kills.<br />The data proves it.</h2>
+      <p class="section-desc">Every major industrial disaster of the past 40 years has one thing in common: operators
+        couldn't distinguish the signal from the noise.</p>
+
+      <div class="problem-grid reveal">
+        <div>
+          <div class="problem-visual">
+            <div class="pv-header">
+              <span class="pv-title">TRADITIONAL HMI — ALARM LIST</span>
+              <span class="pv-badge badge-red">FLOOD ACTIVE</span>
+            </div>
+            <div class="alarm-list" id="chaosList"></div>
+            <div class="chaos-label">⚠ OPERATOR COGNITIVE OVERLOAD — WHICH ALARM IS REAL?</div>
+          </div>
+        </div>
+
+        <div class="problem-points">
+          <div class="problem-point">
+            <!-- <div class="pp-icon">🔔</div> -->
+            <div>
+              <div class="pp-title">No alarm grouping</div>
+              <div class="pp-desc">One pump failure triggers 4–8 downstream alarms. The traditional HMI shows them as
+                unrelated events. The operator sees chaos, not cause.</div>
+            </div>
+          </div>
+          <div class="problem-point">
+            <!-- <div class="pp-icon">🎭</div> -->
+            <div>
+              <div class="pp-title">One screen, three roles</div>
+              <div class="pp-desc">The operator, the engineer, and the supervisor all see the same screen. Different
+                jobs, same useless information dump.</div>
+            </div>
+          </div>
+          <div class="problem-point">
+            <!-- <div class="pp-icon">🔇</div> -->
+            <div>
+              <div class="pp-title">Code, no language</div>
+              <div class="pp-desc">ALM-0042: P1_MOTOR_TEMP HIGH. What does that mean for what to do next? The HMI
+                doesn't say. The operator has to know.</div>
+            </div>
+          </div>
+          <div class="problem-point">
+            <!-- <div class="pp-icon">⏳</div> -->
+            <div>
+              <div class="pp-title">Reactive, never proactive</div>
+              <div class="pp-desc">Traditional HMIs only alert after a threshold is crossed. By then, the cascade has
+                already begun. There is no early warning.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASCADE SECTION -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="section-tag">01B / How Cascades Work</div>
+      <h2>One failure. Four alarms.<br />Zero context.</h2>
+      <p class="section-desc">This is how a single pump trip creates an alarm flood in a water treatment plant — and how
+        our system handles it differently.</p>
+
+      <div class="cascade reveal">
+        <div class="cascade-header">// PUMP P1 FAILURE — CASCADE SEQUENCE — WATER TREATMENT PLANT</div>
+        <div class="cascade-steps">
+          <div class="cs">
+            <div class="cs-num">1</div>
+            <div class="cs-body">
+              <div class="cs-event">Pump P1 motor overloads and trips</div>
+              <div class="cs-detail">Motor temperature rises from 65°C to 87°C. P1 automatically shuts down. Backup pump
+                P2 is in standby.</div>
+              <span class="cs-alarm">ALM-0042: P1_MOTOR_TEMP HIGH — 87.3°C — CRITICAL</span>
+            </div>
+          </div>
+          <div class="cs">
+            <div class="cs-num">2</div>
+            <div class="cs-body">
+              <div class="cs-event">Inlet flow rate collapses</div>
+              <div class="cs-detail">With P1 down, flow drops from 100 L/min to 18 L/min within 40 seconds. A second
+                alarm fires independently.</div>
+              <span class="cs-alarm">ALM-0088: FLOW_INLET LOW — 18 L/min — HIGH</span>
+            </div>
+          </div>
+          <div class="cs">
+            <div class="cs-num">3</div>
+            <div class="cs-body">
+              <div class="cs-event">Inlet tank level begins falling</div>
+              <div class="cs-detail">Without inflow, the inlet tank drains. Level drops below 20% threshold. A third
+                alarm — entirely separate in the traditional list.</div>
+              <span class="cs-alarm">ALM-0103: TANK_INLET LEVEL LOW — 17% — HIGH</span>
+            </div>
+          </div>
+          <div class="cs">
+            <div class="cs-num">4</div>
+            <div class="cs-body">
+              <div class="cs-event">System pressure drops</div>
+              <div class="cs-detail">Reduced flow causes pressure to fall below 1 bar. Fourth alarm fires. Operator now
+                sees 4 critical alerts with no link between them.</div>
+              <span class="cs-alarm">ALM-0156: PRESSURE LOW — 0.7 bar — CRITICAL</span>
+            </div>
+          </div>
+          <div class="cs">
+            <div class="cs-num">✓</div>
+            <div class="cs-body">
+              <div class="cs-event" style="color:var(--green)">OperatorAI groups all 4 into ONE incident</div>
+              <div class="cs-detail">"Critical: Pump P1 failure at 14:32. Motor temperature triggered cascade across
+                flow, tank level, and pressure sensors. Root cause: P1 trip. Backup pump P2 ready to start. ETA to
+                critical tank level: 8 minutes."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE DEMO -->
+  <section id="demo" class="demo-section">
+    <div class="container">
+      <div class="section-tag">02 / Live Demo</div>
+      <h2>Watch the transformation.</h2>
+      <p class="section-desc">Toggle between Traditional and Smart mode during the same pump failure scenario. This is
+        the moment the judges will remember.</p>
+
+      <div style="margin-top:3rem">
+        <div class="toggle-bar">
+          <button class="toggle-btn active-trad" id="btnTrad" onclick="switchMode('trad')">Traditional HMI</button>
+          <button class="toggle-btn" id="btnSmart" onclick="switchMode('smart')">Smart HMI</button>
+        </div>
+
+        <!-- TRADITIONAL PANEL -->
+        <div class="demo-panel active" id="panelTrad">
+          <div class="trad-screen" style="grid-column:1/-1">
+            <div class="trad-header">
+              <div class="trad-title">⚠ ALARM MANAGEMENT SYSTEM — WATER TREATMENT PLANT A</div>
+              <div class="alarm-count-badge" id="alarmCountBadge">47 ACTIVE ALARMS</div>
+            </div>
+            <div class="trad-alarms" id="tradAlarmList"></div>
+            <div class="trad-footer">
+              <span>LAST UPDATE: <span id="tradTime">14:32:07</span></span>
+              <span>UNACKNOWLEDGED: <span style="color:var(--red)">31</span></span>
+              <span>SUPPRESSED: 12</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SMART PANEL -->
+        <div class="demo-panel" id="panelSmart">
+          <!-- Plant Overview -->
+          <div class="smart-plant">
+            <div class="smart-header">
+              <span class="smart-title">// PLANT OVERVIEW</span>
+              <span class="pv-badge badge-red" id="smart-incident-badge">1 INCIDENT ACTIVE</span>
+            </div>
+            <div class="plant-view">
+              <div class="plant-grid">
+                <div class="sensor-card alert" id="hmi-p1">
+                  <div class="sc-name">PUMP P1</div>
+                  <div class="sc-val red" id="hmi-p1-val">TRIPPED<span class="sc-unit"></span></div>
+                </div>
+                <div class="sensor-card ok" id="hmi-p2">
+                  <div class="sc-name">PUMP P2</div>
+                  <div class="sc-val green" id="hmi-p2-val">STANDBY<span class="sc-unit"></span></div>
+                </div>
+                <div class="sensor-card alert" id="hmi-flow">
+                  <div class="sc-name">FLOW INLET</div>
+                  <div class="sc-val red" id="hmi-flow-val">18<span class="sc-unit">L/min</span></div>
+                </div>
+                <div class="sensor-card warn" id="hmi-level">
+                  <div class="sc-name">TANK LEVEL</div>
+                  <div class="sc-val amber" id="hmi-level-val">17<span class="sc-unit">%</span></div>
+                </div>
+                <div class="sensor-card alert" id="hmi-press">
+                  <div class="sc-name">PRESSURE</div>
+                  <div class="sc-val red" id="hmi-press-val">0.7<span class="sc-unit">bar</span></div>
+                </div>
+                <div class="sensor-card alert" id="hmi-temp">
+                  <div class="sc-name">MOTOR TEMP</div>
+                  <div class="sc-val red" id="hmi-temp-val">87<span class="sc-unit">°C</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Incident Card -->
+          <div class="incident-card" id="smart-incident-card">
+            <div class="ic-header">
+              <span class="ic-title">🔴 Pump P1 Cascade Failure</span>
+              <span class="ic-score">SCORE: 91</span>
+            </div>
+            <div class="ic-body">
+              <div>Motor overload at 14:32 triggered cascading failures across flow, tank level, and pressure systems. 4
+                linked alarms grouped into 1 incident.</div>
+              <div class="ic-tags">
+                <span class="ic-tag">P1_MOTOR_TEMP</span>
+                <span class="ic-tag">FLOW_INLET</span>
+                <span class="ic-tag">TANK_LEVEL</span>
+                <span class="ic-tag">PRESSURE</span>
+              </div>
+
+              <!-- Mini Trend Graph -->
+              <div class="ic-trend">
+                <div class="ict-header">
+                  <span>Motor Temp (Last 10 Min)</span>
+                  <span style="color:var(--red);" id="trend-val">87°C</span>
+                </div>
+                <div class="ict-chart">
+                  <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+                    <!-- critical threshold line -->
+                    <line x1="0" y1="10" x2="100" y2="10" stroke="rgba(239, 68, 68, 0.5)" stroke-width="1"
+                      stroke-dasharray="2,2" />
+                    <text x="0" y="8" fill="rgba(239, 68, 68, 0.8)" font-family="monospace" font-size="6">85°C
+                      THRESHOLD</text>
+
+                    <!-- trend line (starts normal, creeps up, crosses threshold) -->
+                    <polyline id="trend-line" points="0,25 20,25 30,24 40,22 50,23 60,18 70,15 80,12 90,8 100,5"
+                      fill="none" stroke="var(--amber)" stroke-width="1.5" />
+
+                    <!-- fill under line -->
+                    <polygon id="trend-poly"
+                      points="0,25 20,25 30,24 40,22 50,23 60,18 70,15 80,12 90,8 100,5 100,30 0,30"
+                      fill="url(#grad1)" />
+
+                    <defs>
+                      <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:var(--amber);stop-opacity:0.2" />
+                        <stop offset="100%" style="stop-color:var(--amber);stop-opacity:0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="ic-action">
+                <strong>// AI NARRATION</strong>
+                "Critical: Pump P1 failure at 14:32. Cascade across 4 sensors. Backup pump P2 available. ETA to critical
+                tank level: 8 minutes."
+              </div>
+            </div>
+          </div>
+
+          <!-- Role Switcher -->
+          <div class="role-switcher">
+            <div class="rs-header">// ROLE-BASED GUIDANCE</div>
+            <div class="role-tabs">
+              <button class="role-tab active" onclick="switchRole('op',this)">Operator</button>
+              <button class="role-tab" onclick="switchRole('eng',this)">Engineer</button>
+              <button class="role-tab" onclick="switchRole('sup',this)">Supervisor</button>
+            </div>
+            <div class="role-content">
+              <div class="role-view active" id="rv-op">
+                <span class="rv-badge"
+                  style="background:rgba(239,68,68,0.2);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)">OPERATOR</span>
+                <div class="rv-action">Start backup pump P2 immediately.</div>
+                <div class="rv-detail">P1 has tripped due to motor overtemp. P2 is in standby and ready. Tank level will
+                  reach critical in ~8 minutes without action. Isolate P1 after P2 is confirmed running.</div>
+              </div>
+              <div class="role-view" id="rv-eng">
+                <span class="rv-badge"
+                  style="background:rgba(59,130,246,0.2);color:#93c5fd;border:1px solid rgba(59,130,246,0.3)">ENGINEER</span>
+                <div class="rv-action">Root cause: P1 mechanical seal degradation.</div>
+                <div class="rv-detail">Motor temp trend shows gradual rise over last 6 hrs before trip. Likely seal
+                  failure or bearing wear. Schedule P1 maintenance within 4 hours. Check lubrication logs for last 30
+                  days.</div>
+              </div>
+              <div class="role-view" id="rv-sup">
+                <span class="rv-badge"
+                  style="background:rgba(34,197,94,0.2);color:#86efac;border:1px solid rgba(34,197,94,0.3)">SUPERVISOR</span>
+                <div class="rv-action">Zone A at risk. No production impact yet.</div>
+                <div class="rv-detail">P1 failure contained. P2 switchover in progress. ETA to full recovery: 12
+                  minutes. No safety threshold breached. Maintenance required within 4 hrs. Notify shift manager if P2
+                  fails to start.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANT SIMULATION -->
+  <section id="simulation" style="background:var(--bg3);border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="section-tag">02B / Visual Simulation</div>
+      <h2>The Physical Reality.</h2>
+      <p class="section-desc">A live visual representation of the water treatment plant and the cascading failure
+        currently happening.</p>
+
+      <div class="plant-diagram reveal">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+          <div>
+            <h3 style="font-family:var(--sans); font-size:1.5rem; margin-bottom:0.5rem; color:var(--bg);">Live Plant
+              Telemetry</h3>
+            <p style="font-family:var(--mono); font-size:0.8rem; color:var(--text2);">Real-time monitoring of physical
+              assets</p>
+          </div>
+          <div>
+            <button class="btn-primary" id="btnSimulateFix" onclick="simulateFix()">▶ START BACKUP PUMP (P2)</button>
+          </div>
+        </div>
+
+        <div class="pd-flow-path">
+          <!-- Inlet -->
+          <div class="pd-node">
+            <div class="pd-component source">WATER<br />SOURCE</div>
+          </div>
+
+          <div class="pd-pipe horizontal" id="pipe-in">
+            <div class="pd-water slow" id="water-in"></div>
+            <div class="pd-sensor alert" id="sens-flow">FLOW: 18 L/min</div>
+          </div>
+
+          <!-- Pumps -->
+          <div class="pd-node pumps">
+            <div class="pd-component pump alert" id="pump1">
+              <div class="pump-rotor stopped" id="rotor1"></div>
+              <span id="p1-status">PUMP P1 (TRIPPED)</span>
+              <div class="pd-sensor alert" style="bottom:-35px; top:auto;" id="sens-temp">TEMP: 87°C</div>
+            </div>
+            <div class="pd-component pump ok" id="pump2">
+              <div class="pump-rotor stopped" id="rotor2"></div>
+              <span id="p2-status">PUMP P2 (STANDBY)</span>
+            </div>
+          </div>
+
+          <div class="pd-pipe horizontal" id="pipe-mid">
+            <div class="pd-water slow" id="water-mid"></div>
+          </div>
+
+          <!-- Tank -->
+          <div class="pd-node">
+            <div class="pd-component tank">
+              <div class="tank-water warn" style="height: 17%" id="tank-water"></div>
+            </div>
+            <div class="pd-sensor warn" style="margin-top:10px;" id="sens-level">LEVEL: 17%</div>
+          </div>
+
+          <div class="pd-pipe horizontal" id="pipe-out">
+            <div class="pd-water slow" id="water-out"></div>
+            <div class="pd-sensor alert" id="sens-press">PRESS: 0.7 bar</div>
+          </div>
+
+          <!-- Outlet -->
+          <div class="pd-node">
+            <div class="pd-component dest">CITY<br />SUPPLY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCADA HMI INTERFACE -->
+  <section id="scada-hmi" style="background:#e8e8e8; border-top:1px solid #ccc; color: #333;">
+    <div class="container">
+      <div class="section-tag" style="color:#d97706;">02C / Legacy SCADA View</div>
+      <h2 style="color:#111;">Classic Plant Overview.</h2>
+      <p class="section-desc" style="color:var(--text);">This is what a traditional SCADA / High-Performance HMI screen
+        looks like, monitoring the exact same data points using standard industrial graphics.</p>
+
+      <div class="scada-panel reveal">
+        <div class="scada-topbar">
+          <span>WATER_TREATMENT_PLANT_A</span>
+          <span id="scada-clock">14:32:07</span>
+        </div>
+        <div class="scada-canvas">
+          <!-- Pipes -->
+          <div class="scada-pipe" style="left:0; top:45%; width:28%; height:12px;"></div>
+          <!-- Pipe split to P1 -->
+          <div class="scada-pipe" style="left:28%; top:32%; width:12px; height:14%;"></div>
+          <!-- Pipe split to P2 -->
+          <div class="scada-pipe" style="left:28%; top:45%; width:12px; height:18%;"></div>
+          <!-- Pipe P1 to Tank -->
+          <div class="scada-pipe" style="left:34%; top:32%; width:22%; height:12px;"></div>
+          <div class="scada-pipe" style="left:56%; top:32%; width:12px; height:14%;"></div>
+          <!-- Pipe P2 to Tank -->
+          <div class="scada-pipe" style="left:34%; top:62%; width:16%; height:12px;"></div>
+          <div class="scada-pipe" style="left:50%; top:45%; width:12px; height:18%;"></div>
+          <div class="scada-pipe" style="left:50%; top:45%; width:6%; height:12px;"></div>
+
+          <!-- Main outlet pipe -->
+          <div class="scada-pipe" style="left:65%; top:45%; width:35%; height:12px;"></div>
+
+          <!-- FLOW INLET -->
+          <div class="scada-widget" style="left: 8%; top: 32%;">
+            <div class="sw-label">FT-101 (INLET FLOW)</div>
+            <div class="sw-value alert" id="scada-flow">18.0<span class="sw-unit">L/m</span></div>
+          </div>
+
+          <!-- PUMP 1 -->
+          <div class="scada-pump" style="left: 28%; top: 25%;">
+            <div class="sp-icon tripped" id="scada-p1-icon">
+              <div class="sp-triangle"></div>
+            </div>
+            <div class="sw-label">P-1A (MAIN)</div>
+            <div class="sw-value alert" id="scada-p1-temp" style="font-size:0.9rem; min-width:60px;">87.3<span
+                class="sw-unit">°C</span></div>
+          </div>
+
+          <!-- PUMP 2 -->
+          <div class="scada-pump" style="left: 28%; top: 55%;">
+            <div class="sp-icon offline" id="scada-p2-icon">
+              <div class="sp-triangle"></div>
+            </div>
+            <div class="sw-label">P-1B (STBY)</div>
+            <div class="sw-value ok" id="scada-p2-state" style="font-size:0.9rem; min-width:60px;">OFF</div>
+          </div>
+
+          <!-- TANK -->
+          <div class="scada-tank-group" style="left: 54%; top: 20%;">
+            <div class="sw-label">TK-200 (INLET TANK)</div>
+            <div class="scada-tank">
+              <div class="st-level warn" id="scada-tank-fill" style="height: 17%;"></div>
+            </div>
+            <div class="sw-value warn" id="scada-level">17.0<span class="sw-unit">%</span></div>
+          </div>
+
+          <!-- PRESSURE -->
+          <div class="scada-widget" style="left: 78%; top: 32%;">
+            <div class="sw-label">PT-301 (SYS PRESS)</div>
+            <div class="sw-value alert" id="scada-press">0.70<span class="sw-unit">bar</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="solution">
+    <div class="container">
+      <div class="section-tag">03 / How It Works</div>
+      <h2>Three layers of intelligence.</h2>
+      <p class="section-desc">No black-box ML. A transparent, explainable system that works exactly the way judges can
+        follow in real time.</p>
+
+      <div class="how-grid reveal">
+        <div class="how-step">
+          <div class="hs-num">01</div>
+          <div class="hs-title">Simulation Engine</div>
+          <div class="hs-desc">10 sensors, 3 failure scenarios, JavaScript timers with realistic propagation delays. A
+            pump trip takes 40 seconds to cascade — exactly like a real plant.</div>
+        </div>
+        <div class="how-step">
+          <div class="hs-num">02</div>
+          <div class="hs-title">Scoring Algorithm</div>
+          <div class="hs-desc">Rule-based incident scoring: severity level, cascade count, chattering detection, trend
+            direction, and urgency escalation. Transparent, debuggable, and ISA-18.2 aligned.</div>
+        </div>
+        <div class="how-step">
+          <div class="hs-num">03</div>
+          <div class="hs-title">Role Engine + AI</div>
+          <div class="hs-desc">Three role views (Operator, Engineer, Supervisor) with tailored guidance. Optional LLM
+            narration converts structured incident JSON into plain-English summaries.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORING ALGORITHM -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="section-tag">03B / Scoring Algorithm</div>
+      <h2>Every score has a reason.</h2>
+      <p class="section-desc">Explainability beats black-box accuracy in a 5-minute demo. Judges can follow every
+        number.</p>
+
+      <table class="scoring-table reveal">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Score Contribution</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alarm severity level</td>
+            <td><span class="score-num">Critical +40 / High +25</span></td>
+            <td>Direct ISA-18.2 compliance</td>
+          </tr>
+          <tr>
+            <td>Cascade count</td>
+            <td><span class="score-num">+8 per linked component</span></td>
+            <td>Detects root-cause relationships</td>
+          </tr>
+          <tr>
+            <td>Chattering detection</td>
+            <td><span class="score-num">+15 if 3+ fires in 10 min</span></td>
+            <td>Filters nuisance alarms automatically</td>
+          </tr>
+          <tr>
+            <td>Trend direction</td>
+            <td><span class="score-num">+12 if worsening</span></td>
+            <td>Proactive — fires before threshold breach</td>
+          </tr>
+          <tr>
+            <td>Time unacknowledged</td>
+            <td><span class="score-num">+5 every 2 minutes</span></td>
+            <td>Urgency escalation for ignored incidents</td>
+          </tr>
+          <tr>
+            <td>Role relevance filter</td>
+            <td><span class="score-num">Show / hide per role</span></td>
+            <td>Reduces irrelevant noise per person</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="tech"
+    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-tag">04 / Technology Stack</div>
+      <h2>Built to ship in 14 days.</h2>
+      <p class="section-desc">Every tool chosen for speed, explainability, and demo stability — not complexity.</p>
+
+      <div class="tech-grid reveal">
+        <div class="tech-card">
+          <div class="tc-layer">UI Layer</div>
+          <div class="tc-name">React + Tailwind</div>
+          <div class="tc-why">Component-based role switching and live state management</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">Data Viz</div>
+          <div class="tc-name">Chart.js</div>
+          <div class="tc-why">Sensor trend panels — temperature, pressure, flow over time</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">Simulation</div>
+          <div class="tc-name">JS Timers + JSON</div>
+          <div class="tc-why">3 failure scenario files, realistic propagation delays</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">Alarm Logic</div>
+          <div class="tc-name">Plain JavaScript Rules</div>
+          <div class="tc-why">No ML — fully explainable scoring in every demo</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">AI Layer (optional)</div>
+          <div class="tc-name">Claude / OpenAI API</div>
+          <div class="tc-why">NLP narration from structured incident JSON objects</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">Backend</div>
+          <div class="tc-name">Node.js + Express</div>
+          <div class="tc-why">Optional — only if role/auth structure is needed</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">Version Control</div>
+          <div class="tc-name">Git + GitHub</div>
+          <div class="tc-why">Critical for 3-person collaboration and rollback</div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-layer">Deployment</div>
+          <div class="tc-name">Vercel / Netlify</div>
+          <div class="tc-why">One-click deploy, stable URL for judging round</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITIVE POSITIONING -->
+  <section>
+    <div class="container">
+      <div class="section-tag">05 / Competitive Edge</div>
+      <h2>Why other teams won't frame it this way.</h2>
+      <p class="section-desc">Most teams will build a better dashboard. We're demonstrating a paradigm shift.</p>
+
+      <div class="comp-grid reveal">
+        <div class="comp-card them">
+          <div class="cc-name">Typical Team A</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> Better alarm dashboard</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> Same data, nicer charts</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No role differentiation</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No live contrast moment</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No NLP narration</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No root-cause grouping</div>
+        </div>
+        <div class="comp-card us">
+          <div class="cc-name">OperatorAI</div>
+          <div class="cc-item"><span class="cc-check yes">✓</span> Alarm → incident grouping</div>
+          <div class="cc-item"><span class="cc-check yes">✓</span> Traditional vs Smart toggle</div>
+          <div class="cc-item"><span class="cc-check yes">✓</span> 3 role-specific views</div>
+          <div class="cc-item"><span class="cc-check yes">✓</span> NLP plain-English narration</div>
+          <div class="cc-item"><span class="cc-check yes">✓</span> Proactive trend scoring</div>
+          <div class="cc-item"><span class="cc-check amber">◑</span> Real cascading simulation</div>
+        </div>
+        <div class="comp-card them">
+          <div class="cc-name">Typical Team B</div>
+          <div class="cc-item"><span class="cc-check amber">◑</span> ML-based predictions</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> Black box — unexplainable</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No live demo stability</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No ISA-18.2 alignment</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> Over-engineered for Round 1</div>
+          <div class="cc-item"><span class="cc-check no">✗</span> No ABB language alignment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" style="background:var(--bg2);border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="section-tag">06 / 14-Day Roadmap</div>
+      <h2>May 6 → May 20.<br />Every day counts.</h2>
+      <p class="section-desc">A tight build plan designed to have a demo-ready prototype by Day 12 with two full days to
+        polish the video.</p>
+
+      <div class="timeline reveal">
+        <div class="tl-row">
+          <div class="tl-date">MAY 6–7 · DAY 1–2</div>
+          <div class="tl-task">Lock team + assign roles. Watch 2 ABB HMI demo videos on YouTube.</div>
+          <div class="tl-del">Roles confirmed</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 8 · DAY 3</div>
+          <div class="tl-task">Domain study: HMI vs SCADA, alarm types, ISA-18.2 basics, HP-HMI principles.</div>
+          <div class="tl-del">Shared understanding</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 9–10 · DAY 4–5</div>
+          <div class="tl-task">Wireframes: Plant overview, Traditional alarm panel, Smart incident panel, Role views.
+          </div>
+          <div class="tl-del">3–4 screens wireframed</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 11–12 · DAY 6–7</div>
+          <div class="tl-task">Build plant overview UI + sensor simulator: 10 sensors, JS timers, 3 scenario JSON files.
+          </div>
+          <div class="tl-del">Working simulation</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 13–14 · DAY 8–9</div>
+          <div class="tl-task">Traditional alarm feed + smart grouping + scoring algorithm + role filter layer.</div>
+          <div class="tl-del">Core logic done</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 15–16 · DAY 10–11</div>
+          <div class="tl-task">Role views (Operator / Engineer / Supervisor). Recommendation cards. Optional: NLP API.
+          </div>
+          <div class="tl-del">Full features working</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 17 · DAY 12</div>
+          <div class="tl-task">Traditional ↔ Smart toggle. UI polish. Stress test all 3 failure scenarios end-to-end.
+          </div>
+          <div class="tl-del">Demo-ready</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">MAY 18 · DAY 13</div>
+          <div class="tl-task">Write video script. Hook → Problem → Solution → Architecture → Risks → Roadmap.</div>
+          <div class="tl-del">Script locked</div>
+        </div>
+        <div class="tl-row" style="background:rgba(245,158,11,0.05);border-left:2px solid var(--amber)">
+          <div class="tl-date" style="color:var(--amber2)">MAY 19–20 · DAY 14</div>
+          <div class="tl-task" style="font-weight:700">Record + edit video. Final review. Submit before end of day May
+            20.</div>
+          <div class="tl-del"
+            style="background:rgba(245,158,11,0.15);color:var(--amber);border-color:rgba(245,158,11,0.3)">✅ SUBMITTED
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-tag" style="justify-content:center">ABB Accelerator 2026 · Round 1 Deadline: May 20</div>
+    <h2>Not a better dashboard.<br />An operator copilot.</h2>
+    <p>Built on ABB's own vision of high-performance HMI. Demonstrable in 5 minutes. Real enough to save lives.</p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn-primary">See the Demo</a>
+      <a href="#problem" class="btn-secondary">Read the Research</a>
+    </div>
+  </section>
+
+  <!-- DEMO CONTROL PANEL -->
+  <div id="demo-controls" class="demo-controls collapsed">
+    <div class="dc-header" onclick="toggleDemoControls()"
+      style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <span>DEMO SEQUENCE</span>
+      <span id="dc-chevron">▲</span>
+    </div>
+    <div class="dc-buttons" id="dc-buttons">
+      <button onclick="setNormalState()" id="btnReset">1. Normal Operation</button>
+      <button onclick="triggerFailure()" id="btnTrigger">2. Trigger Cascade</button>
+      <button onclick="simulateFix()" id="btnFix">3. OperatorAI Action</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>OPERATORAI — ABB ACCELERATOR 2026 — THEME 1: SMART HMI</span>
+    <span>BENGALURU FINALE · JUNE 25, 2026</span>
+    <span>CMR ENGINEERING COLLEGE · HYDERABAD</span>
+  </footer>
+
+  <!-- SHIFT SUMMARY SIDEBAR -->
+  <div id="shift-sidebar" class="shift-sidebar">
+    <div class="ss-header">
+      <span>// AI SHIFT LOG</span>
+      <button class="ss-close" onclick="toggleShiftLog()">✕</button>
+    </div>
+    <div class="ss-content" id="shift-log-content">
+      <!-- Logs injected by JS -->
+    </div>
+  </div>
+
+  <div class="shift-toggle" onclick="toggleShiftLog()">
+    ◀ AI SHIFT LOG
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
