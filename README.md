@@ -6,18 +6,18 @@
 
 ---
 
-## 🚀 Overview
+## Overview
 OperatorAI is a fully interactive, web-based Human-Machine Interface (HMI) simulator designed to redefine how operators interact with industrial control systems. Built specifically for a water treatment plant context, our project demonstrates a shift from traditional, cluttered alarm systems to an intelligent, AI-guided interface. 
 
 Our solution directly aligns with high-performance HMI principles (ISA-101) and alarm management standards (ISA-18.2).
 
-## ⚠️ The Problem
+## The Problem
 In traditional SCADA setups, a single equipment failure can trigger a massive cascade of downstream alarms. This floods the operator's screen with raw, disjointed data, causing "alarm fatigue" and masking the true root cause. 
 
 * **The Reality:** While ISA-18.2 recommends fewer than 6 alarms per hour, real-world operators often face hundreds during an incident.
 * **The Impact:** Information overload leads to delayed responses and critical incidents (e.g., the 2005 Texas City refinery explosion).
 
-## 💡 Our Solution
+##  Our Solution
 OperatorAI eliminates alarm floods by automatically:
 1. **Aggregating** cascading alarms into a single, comprehensive "Incident Card".
 2. **Scoring** the incident based on severity, cascade depth, and trend trajectories.
@@ -26,7 +26,7 @@ OperatorAI eliminates alarm floods by automatically:
 
 ---
 
-## 🛠️ Key Features
+## Key Features
 
 ### 1. Dynamic Failure Simulation
 We built a custom JavaScript simulation engine that realistically models a plant with live telemetry points. We feature three triggerable scenarios:
@@ -45,7 +45,7 @@ The system recognizes that different personnel need different data to do their j
 
 ---
 
-## 💻 Tech Stack & Architecture
+## Tech Stack & Architecture
 
 We built this project entirely from scratch without relying on heavy frameworks, compilers, or external dependencies. 
 
@@ -59,7 +59,7 @@ We built this project entirely from scratch without relying on heavy frameworks,
 
 ---
 
-## 👥 The Team
+## The Team
 **CMR Engineering College, Hyderabad** (B.Tech CSE, Class of 2027)
 
 | Name | Role | Email |
@@ -72,7 +72,7 @@ We built this project entirely from scratch without relying on heavy frameworks,
 
 ---
 
-## ⚙️ How to Run Locally
+## How to Run Locally
 
 Since the project uses vanilla web technologies, there are no build steps, package installations, or local servers required.
 
